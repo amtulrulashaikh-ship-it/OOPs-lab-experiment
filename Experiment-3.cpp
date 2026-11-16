@@ -22,12 +22,12 @@ class A{
 };
 int main() {
     A obj1;
-    obj1.print();
+     obj1.print();
     A obj2(5);
-    obj2.print();
+     obj2.print();
     A obj3(obj2);
-    obj3.print();
+     obj3.print();
     A obj4(std::move(obj3));
-    obj4.print();
+     obj4.print();
   return 0;
 }
