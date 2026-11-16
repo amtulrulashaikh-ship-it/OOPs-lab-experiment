@@ -1,56 +1,66 @@
 #include <iostream>
 using namespace std;
-class Person
+class Shape
 {
 public:
-    string name;
-    void getPerson()
+    virtual float area() = 0;
+};
+class Circle: public Shape
+{
+public:
+    float r;
+    Circle(float radius)
     {
-        cout << "Enter name: ";
-        cin >> name;
+        r = radius;
     }
-    void displayPerson()
+    float area()
     {
-        cout << "Name: " << name << endl;
+        return 3.14 * r * r;
     }
 };
-class Student: public Person
+class Rectangle: public Shape
 {
 public:
-    int rollNo;
-    void getStudent()
+    float l,b;
+    Rectangle(float length,float breadth)
     {
-        cout << "Enter Roll number: ";
-        cin >> rollNo;
+        l = length;
+        b = breadth;
     }
-    void displayStudent()
+    float area()
     {
-        displayPerson();
-        cout << "Roll Number: " << rollNo << endl;
+        return l * b;
     }
 };
-class GraduateStudent: public Student
+class Triangle: public Shape
 {
 public:
-    string course;
-    void getGraduate()
+    float b,h;
+    Triangle(float base,float height)
     {
-        cout << "Enter course: ";
-        cin >> course;
+        b = base;
+        h = height;
     }
-    void displayGraduate()
+    float area()
     {
-        displayStudent();
-        cout << "Course: " << course << endl;
+        return 0.5 * b * h;
     }
 };
 int main()
 {
-    GraduateStudent g;
-    g.getPerson();
-    g.getStudent();
-    g.getGraduate();
-    cout << "\nStudent Details:\n";
-    g.displayGraduate();
+    Circle c(5);
+    Rectangle r(4,6);
+    Triangle t(4,5);
+
+    Shape *s;
+    s = &c;
+    cout << "Circle Area: " << s->area() << endl;
+
+    s = &r;
+    cout << "Rectangle Area: " << s->area() << endl;
+
+    s = &t;
+    cout << "Triangle Area: " << s->area() << endl;
+
     return 0;
 }
